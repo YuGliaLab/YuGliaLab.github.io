@@ -1,0 +1,15 @@
+{
+  "name": "labwebsite",
+  "version": "1.0.0",
+  "description": "This repo contains a static mirror of the current Wix site under `/site`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nunjucks": "^3.2.4"
+  }
+}

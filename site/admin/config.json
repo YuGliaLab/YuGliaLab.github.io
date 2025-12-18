@@ -1,0 +1,38 @@
+{
+  "backend": {
+    "name": "github",
+    "repo": "OWNER/REPO",
+    "branch": "main"
+  },
+  "media_folder": "assets/uploads",
+  "public_folder": "/assets/uploads",
+  "collections": [
+    {
+      "name": "pages",
+      "label": "Pages",
+      "files": [
+        {
+          "label": "Home",
+          "name": "home",
+          "file": "content/pages/home.json",
+          "fields": [
+            { "label": "Title", "name": "title", "widget": "string" },
+            { "label": "Body", "name": "body", "widget": "text" }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "news",
+      "label": "News",
+      "folder": "content/news",
+      "create": true,
+      "slug": "{{year}}-{{month}}-{{day}}-{{slug}}",
+      "fields": [
+        { "label": "Title", "name": "title", "widget": "string" },
+        { "label": "Date", "name": "date", "widget": "datetime" },
+        { "label": "Body", "name": "body", "widget": "markdown" }
+      ]
+    }
+  ]
+}

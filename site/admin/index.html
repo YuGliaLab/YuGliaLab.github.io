@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yu Lab Admin</title>
+
+    <!-- Decap CMS -->
+    <script>
+      // We manually init so we can load a JSON config (avoids local servers
+      // serving config.yml as application/octet-stream, which Decap rejects).
+      window.CMS_MANUAL_INIT = true;
+    </script>
+    <script src="https://unpkg.com/decap-cms@^3.6.0/dist/decap-cms.js"></script>
+  </head>
+  <body>
+    <div id="nc-root"></div>
+
+    <script>
+      (async () => {
+        try {
+          const resp = await fetch("./config.json", { cache: "no-store" });
+          if (!resp.ok) {
+            throw new Error(`Failed to load config.json: ${resp.status} ${resp.statusText}`);
+          }
+          const config = await resp.json();
+          // `CMS` is provided by the decap-cms script.
+          CMS.init({ config });
+        } catch (err) {
+          console.error(err);
+          document.body.innerHTML =
+            "<pre style=\"padding:16px; white-space:pre-wrap\">" +
+            "Decap CMS failed to start.\n\n" +
+            String(err) +
+            "</pre>";
+        }
+      })();
+    </script>
+  </body>
+</html>

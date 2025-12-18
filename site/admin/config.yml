@@ -1,0 +1,66 @@
+# Decap CMS configuration
+#
+# IMPORTANT:
+# - Update `repo:` once your GitHub repo exists (OWNER/REPO)
+# - Choose a branch that exists (usually `main`)
+# - For GitHub auth you will need one of:
+#     1) GitHub OAuth app + Decap proxy server, OR
+#     2) GitHub backend with a "gateway" (Netlify Identity), OR
+#     3) A custom auth provider
+#   GitHub Pages alone does NOT provide auth.
+#
+backend:
+  name: github
+  repo: YuGliaLab/yulab.github.com
+  branch: main
+
+# Use Editorial Workflow if you want drafts + review (optional)
+# publish_mode: editorial_workflow
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home"
+        name: "home"
+        file: "content/pages/home.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
+      - label: "About PI"
+        name: "about-the-pi"
+        file: "content/pages/about-the-pi.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
+      - label: "Contact"
+        name: "contact"
+        file: "content/pages/contact.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
+      - label: "Meet the Team"
+        name: "meet-the-team"
+        file: "content/pages/meet-the-team.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
+      - label: "Publications"
+        name: "publications"
+        file: "content/pages/publications.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
+
+  - name: "news"
+    label: "News"
+    folder: "content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
