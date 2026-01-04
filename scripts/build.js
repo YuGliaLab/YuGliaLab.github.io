@@ -76,7 +76,25 @@ const pages = [
 
 pages.forEach(page => {
     try {
-        const res = env.render(page.template, page.data);
+        let res = env.render(page.template, page.data);
+
+        // Fix images: remove srcset and ensure src points to local assets
+        res = res.replace(/srcset="[^"]*"/g, '');
+        
+        // Replace absolute Wix/static media URLs with local asset paths if they exist
+        const assetFiles = fs.readdirSync(path.join(__dirname, '../site/assets'));
+        res = res.replace(/src="([^"]*)"/g, (match, src) => {
+            if (src.includes('static.sitestatic.com')) {
+                const filename = src.split('/').pop().split('?')[0];
+                const filenameAlt = filename.replace(/~/g, '_');
+                const localMatch = assetFiles.find(f => f === filename || f === filenameAlt);
+                if (localMatch) {
+                    return `src="${page.data.root_path}assets/${localMatch}"`;
+                }
+            }
+            return match;
+        });
+
         const outputPath = path.join(__dirname, '../' + page.output);
         const outputDir = path.dirname(outputPath);
         if (!fs.existsSync(outputDir)){
