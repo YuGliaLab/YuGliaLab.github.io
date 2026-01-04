@@ -39,14 +39,20 @@ html, body {
   }
 
   /* 
+     Hide the complex desktop header completely.
+     We are using the custom #mobile-header instead.
+  */
+  #SITE_HEADER {
+    display: none !important;
+  }
+
+  /* 
     Aggressive reset for all main containers. 
     Force them to be fluid, full width, and remove fixed positioning/margins. 
   */
   #site-root,
   #SITE_CONTAINER,
   #masterPage,
-  #SITE_HEADER,
-  #SITE_HEADER > div,
   #SITE_FOOTER,
   #PAGES_CONTAINER,
   #SITE_PAGES,
@@ -111,49 +117,8 @@ html, body {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding: 0 15px !important;
+    padding: 0 20px !important; /* Unified padding */
     gap: 20px !important;
-  }
-
-  /* 
-     HEADER SPECIFICS 
-  */
-  #SITE_HEADER {
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    z-index: 1000 !important;
-  }
-  
-  /* Title/Logo area */
-  #comp-kj5yugde1,
-  #comp-kj5yugde1 * {
-    text-align: center !important;
-    font-size: 24px !important;
-    line-height: 1.2 !important;
-    white-space: normal !important;
-    width: 100% !important;
-  }
-
-  /* Navigation Menu */
-  #comp-kj5yugjp {
-    margin-top: 10px !important;
-  }
-  #comp-kj5yugjpitemsContainer {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    justify-content: center !important;
-    text-align: center !important;
-    gap: 10px !important;
-    padding: 0 !important;
-  }
-  #comp-kj5yugjpitemsContainer > li {
-    display: inline-block !important;
-    width: auto !important;
-    margin: 0 !important;
-  }
-  #comp-kj5yugjpitemsContainer a {
-    padding: 8px 12px !important;
-    font-size: 16px !important;
   }
 
 
@@ -174,10 +139,13 @@ html, body {
     margin-bottom: 15px !important;
   }
   
-  /* Specific adjustment for the banner images to not be too tall */
+  /* Banner images constraints */
   #img_comp-mekbmw35,
   #img_comp-mekboaj5 {
-    max-height: 250px !important;
+    max-height: 200px !important; /* Smaller height for mobile */
+    object-fit: cover !important;
+    object-position: center !important;
+    border-radius: 8px !important; /* Slight rounding for cleaner look */
   }
 
 
@@ -198,8 +166,10 @@ html, body {
   
   /* Main Title "YU LAB" */
   #comp-kj5z0a012 p span span span {
-    font-size: 42px !important;
+    font-size: 32px !important;
     line-height: 1.2 !important;
+    font-weight: 700 !important;
+    color: #2a5e4d !important;
   }
 
   /* Subtitles */
@@ -207,14 +177,16 @@ html, body {
   #comp-kj5z0a021 p span span span {
     font-size: 18px !important;
     line-height: 1.4 !important;
+    font-weight: 600 !important;
   }
   
   /* Paragraphs */
   p.font_8 {
     font-size: 16px !important;
-    line-height: 1.5 !important;
+    line-height: 1.6 !important;
     text-align: left !important; /* Keep body text readable */
-    padding: 0 10px !important;
+    padding: 0 !important;
+    color: #333 !important;
   }
 
 
@@ -237,5 +209,9 @@ html, body {
 @media (min-width: 992px) {
   :root {
     --site-width: 980px;
+  }
+  /* Hide custom mobile header on desktop */
+  #mobile-header {
+    display: none !important;
   }
 }

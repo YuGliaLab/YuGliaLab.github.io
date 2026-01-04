@@ -61,6 +61,52 @@
 <!-- Essential Viewer Model -->
 <script id="ui-essential-viewer-model" type="application/json">{"fleetConfig":{"fleetName":"ui-thunderbolt","type":"GA","code":0},"mode":{"qa":false,"enableTestApi":false,"debug":false,"ssrIndicator":false,"ssrOnly":false,"siteAssetsFallback":"enable","versionIndicator":false},"componentsLibrariesTopology":[{"artifactId":"editor-elements","namespace":"ui","url":"https:\/\/static.parastorage.site.site\/services\/editor-elements\/1.14741.0"},{"artifactId":"editor-elements","namespace":"dsgnsys","url":"https:\/\/static.parastorage.site.site\/services\/editor-elements\/1.14741.0"}],"siteFeaturesConfigs":{"sessionManager":{"isRunningInDifferentSiteContext":false}},"language":{"userLanguage":"en"},"siteAssets":{"clientTopology":{"mediaRootUrl":"https:\/\/static.sitestatic.com","staticMediaUrl":"https:\/\/static.sitestatic.com\/media","moduleRepoUrl":"https:\/\/static.parastorage.site.site\/unpkg","fileRepoUrl":"https:\/\/static.parastorage.site.site\/services","viewerAppsUrl":"https:\/\/viewer-apps.parastorage.site.site","viewerAssetsUrl":"https:\/\/viewer-assets.parastorage.site.site","siteAssetsUrl":"https:\/\/siteassets.parastorage.site.site","pageJsonServerUrls":["https:\/\/pages.parastorage.site.site","https:\/\/staticorigin.sitestatic.com","https:\/\/www.yu-lab.org","https:\/\/fallback.site.com\/ui-html-editor-pages-webapp\/page"],"pathOfTBModulesInFileRepoForFallback":"ui-thunderbolt\/dist\/"}},"siteFeatures":["appMonitoring","assetsLoader","builderContextProviders","builderModuleLoader","businessLogger","captcha","clickHandlerRegistrar","commonConfig","componentsLoader","componentsRegistry","consentPolicy","contentReflow","cyclicTabbing","domSelectors","domStore","environmentSiteCodeSdk","environment","locationSiteCodeSdk","mpaNavigation","navigationManager","navigationPhases","ooi","pages","panorama","renderer","reporter","router","scrollRestoration","seoSiteCodeSdk","seo","sessionManager","siteMembersSiteCodeSdk","siteMembers","siteScrollBlocker","siteSiteCodeSdk","speculationRules","ssrCache","stores","structureApi","thunderboltInitializer","tpaCommons","translations","usedPlatformApis","warmupData","windowMessageRegistrar","windowSiteCodeSdk","siteCustomElementComponent","siteEmbedsApi","componentsReact","platform"],"site":{"externalBaseUrl":"https:\/\/www.yu-lab.org","isSEO":false},"media":{"staticMediaUrl":"https:\/\/static.sitestatic.com\/media","mediaRootUrl":"https:\/\/static.sitestatic.com\/","staticVideoUrl":"https:\/\/video.sitestatic.com\/"},"requestUrl":"https:\/\/www.yu-lab.org\/","rollout":{"siteAssetsVersionsRollout":false,"isDACRollout":0,"isTBRollout":false},"commonConfig":{"brand":"site","host":"VIEWER","bsi":"","consentPolicy":{},"consentPolicyHeader":{},"siteRevision":"199","renderingFlow":"NONE","language":"en","locale":"en-us"},"interactionSampleRatio":0.01,"dynamicModelUrl":"https:\/\/www.yu-lab.org\/_api\/v2\/dynamicmodel","accessTokensUrl":"https:\/\/www.yu-lab.org\/_api\/v1\/access-tokens","isExcludedFromSecurityExperiments":false,"experiments":{"specs.thunderbolt.hardenFetchAndXHR":true,"specs.thunderbolt.securityExperiments":true}}</script>
 <script>window.viewerModel = JSON.parse(document.getElementById('ui-essential-viewer-model').textContent)</script>
+<style>
+/* Custom Mobile Header Styles */
+#mobile-header {
+  display: none;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  text-align: center;
+}
+#mobile-header .logo {
+  font-family: 'avenir-lt-w01_35-light1475496', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2a5e4d;
+  margin-bottom: 10px;
+  display: block;
+  text-decoration: none;
+}
+#mobile-header .mobile-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#mobile-header .mobile-nav a {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'avenir-lt-w01_35-light1475496', sans-serif;
+}
+#mobile-header .mobile-nav a.active {
+  color: #2a5e4d;
+  font-weight: bold;
+}
+@media (max-width: 991.98px) {
+  #mobile-header {
+    display: block;
+  }
+}
+</style>
 <script>
     window.commonConfig = viewerModel.commonConfig
   </script>
