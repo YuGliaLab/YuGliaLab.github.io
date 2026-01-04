@@ -26,6 +26,9 @@ content = content.replace(/<meta content="[^"]*" name="twitter:description"\/>/,
 content = content.replace(/(["'])assets\//g, '$1{{ root_path }}assets/');
 content = content.replace(/(["'])\.\.\/assets\//g, '$1{{ root_path }}assets/'); // Handle existing ../assets/ if any
 
+// 5.5 Remove external srcset to fix localhost image loading
+content = content.replace(/\ssrcset="[^"]*"/g, '');
+
 // 6. Replace Page ID x2541 with {{ page_id }}
 // We do this BEFORE extracting the block content so we can identify the styles.
 
@@ -36,6 +39,15 @@ content = content.replace(styleRegex, '{% block page_css %}{% endblock %}');
 // Replace compCssMappers style block
 const mapperRegex = /<style id="compCssMappers_x2541">[\s\S]*?<\/style>/;
 content = content.replace(mapperRegex, '{% block page_css_mappers %}{% endblock %}');
+
+// 6.5 Add our responsive overrides stylesheet (loaded after inline styles)
+// This keeps mobile/desktop responsive behavior even if the template is re-extracted.
+if (!content.includes('assets/responsive.css')) {
+    content = content.replace(
+        /<\/head>/i,
+        '\n<link href="{{ root_path }}assets/responsive.css" rel="stylesheet"/>\n</head>'
+    );
+}
 
 // Replace all other x2541 occurrences
 content = content.replace(/x2541/g, '{{ page_id }}');

@@ -1,0 +1,183 @@
+/*
+  Responsive overrides for the static export.
+  
+  The original site was exported from a Wix/Thunderbolt runtime and many
+  elements are positioned with fixed widths (e.g. 980px) and left offsets.
+  This file is intentionally loaded AFTER inline styles so it can override
+  those rules on narrow viewports.
+*/
+
+/* -------------------------------------------------------------------------- */
+/* Base: sensible defaults                                                    */
+/* -------------------------------------------------------------------------- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Prevent accidental horizontal scroll caused by fixed/absolute positioning */
+body {
+  overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Ensure long URLs/words don’t blow up the layout */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: anywhere;
+}
+
+/* -------------------------------------------------------------------------- */
+/* Mobile-first layout fixes                                                  */
+/* -------------------------------------------------------------------------- */
+
+/*
+  The Wix export uses CSS variables like --site-width:980px and sets
+  min-width: var(--site-width) on many wrappers. Override that on small
+  viewports and use padding for breathing room.
+*/
+@media (max-width: 991.98px) {
+  /*
+    Re-define the variable used throughout the generated CSS.
+    This immediately reduces many min-width constraints.
+  */
+  :root {
+    --site-width: 100vw;
+  }
+
+  /* Ensure the main containers can shrink */
+  #site-root,
+  #SITE_CONTAINER,
+  #masterPage,
+  #SITE_HEADER,
+  #SITE_FOOTER,
+  #PAGES_CONTAINER,
+  #SITE_PAGES {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  /*
+    Many generated blocks use margin-left: calc((100% - 980px) * 0.5)
+    plus left:XXXpx. Neutralize those on narrow viewports.
+  */
+  [data-mesh-id$="inlineContent-gridContainer"] > *,
+  [data-mesh-id$="inlineContent-gridContainer"] > interact-element > * {
+    left: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* The core “strip” container: allow it to shrink */
+  .CohWsy {
+    min-width: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Add safe padding to the inner “columns” wrapper */
+  .CohWsy > .V5AUxf {
+    width: 100% !important;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+
+  /*
+    The header navigation strip uses two columns (logo left, menu right).
+    On small screens stack them to prevent overflow.
+  */
+  #SITE_HEADER .CohWsy > .V5AUxf {
+    flex-direction: column !important;
+    row-gap: 12px;
+    align-items: stretch;
+  }
+
+  /* Allow the menu to wrap instead of overflowing off-screen */
+  #SITE_HEADER #comp-kj5yugjpitemsContainer {
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 12px;
+    text-align: center !important;
+  }
+
+  #SITE_HEADER #comp-kj5yugjpitemsContainer > li {
+    display: block;
+  }
+
+  /*
+    Many column containers have hard-coded widths (e.g. width:980px).
+    Let them be fluid.
+  */
+  .ui-column-strip__column {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /*
+    Image widgets are positioned absolutely via .MazNVa with `left: XXXpx`.
+    Make them participate in flow on small screens.
+  */
+  .MazNVa {
+    position: relative !important;
+    left: 0 !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    margin: 0 auto 16px;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* Ensure the image's own fixed width/height does not overflow */
+  .MazNVa img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  /*
+    Footer social icon and text are positioned with hard left offsets.
+    Center them.
+  */
+  #SITE_FOOTER [data-mesh-id$="gridContainer"] {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    justify-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* Tablet / Desktop refinements                                               */
+/* -------------------------------------------------------------------------- */
+
+/* Keep a readable max width on large screens while still being responsive */
+@media (min-width: 992px) {
+  /* Maintain the original 980px design target */
+  :root {
+    --site-width: 980px;
+  }
+}

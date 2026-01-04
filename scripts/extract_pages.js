@@ -47,6 +47,11 @@ function extractPage(inputRelPath, outputRelPath, pageId) {
     pageContent = pageContent.replace(/(["'(])assets\//g, '$1{{ root_path }}assets/');
     pageContent = pageContent.replace(/(["'(])\.\.\/assets\//g, '$1{{ root_path }}assets/');
 
+    // 4. Remove external srcset to fix localhost image loading
+    // Wix export includes srcset pointing to static.sitestatic.com which fails on localhost.
+    // By removing it, we force the browser to use the local 'src' path.
+    pageContent = pageContent.replace(/\ssrcset="[^"]*"/g, '');
+
     // Fix Nunjucks conflict with CSS `{#`
     pageCss = pageCss.replace(/\{#/g, '{ #');
     pageCssMappers = pageCssMappers.replace(/\{#/g, '{ #');
