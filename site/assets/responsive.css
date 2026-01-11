@@ -230,10 +230,11 @@ html, body {
   }
   
   /* Paragraphs */
-  p.font_8 {
+  p.font_8,
+  p.font_9 {
     font-size: 16px !important;
     line-height: 1.6 !important;
-    text-align: left !important; /* Keep body text readable */
+    text-align: center !important; /* Center text as requested */
     padding: 0 !important;
     color: #333 !important;
   }
