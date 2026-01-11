@@ -211,6 +211,9 @@ html, body {
     overflow-wrap: break-word !important;
     word-wrap: break-word !important;
     height: auto !important;
+    left: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
   
   /* Main Title "YU LAB" */
@@ -235,8 +238,11 @@ html, body {
     font-size: 16px !important;
     line-height: 1.6 !important;
     text-align: center !important; /* Center text as requested */
-    padding: 0 !important;
+    padding: 0 10px !important;
     color: #333 !important;
+    left: 0 !important;
+    width: 100% !important;
+    margin-left: 0 !important;
   }
 
 
@@ -245,9 +251,6 @@ html, body {
   */
   #SITE_FOOTER [data-mesh-id$="gridContainer"] {
     padding-bottom: 20px !important;
-  }
-  #comp-kj5yslbz {
-     margin-bottom: 10px !important;
   }
 
 }
