@@ -26,6 +26,50 @@ html, body {
 }
 
 /* -------------------------------------------------------------------------- */
+/* Custom Mobile Header Styles                                                */
+/* -------------------------------------------------------------------------- */
+#mobile-header {
+  display: none;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  text-align: center;
+}
+#mobile-header .logo {
+  font-family: 'avenir-lt-w01_35-light1475496', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2a5e4d;
+  margin-bottom: 10px;
+  display: block;
+  text-decoration: none;
+}
+#mobile-header .mobile-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#mobile-header .mobile-nav a {
+  color: #333;
+  text-decoration: none;
+  font-size: 16px;
+  font-family: 'avenir-lt-w01_35-light1475496', sans-serif;
+  padding: 5px 10px;
+}
+#mobile-header .mobile-nav a:hover,
+#mobile-header .mobile-nav a.active {
+  color: #2a5e4d;
+  font-weight: bold;
+}
+
+/* -------------------------------------------------------------------------- */
 /* Mobile-first layout fixes                                                  */
 /* -------------------------------------------------------------------------- */
 
@@ -44,6 +88,11 @@ html, body {
   */
   #SITE_HEADER {
     display: none !important;
+  }
+
+  /* Show the mobile header */
+  #mobile-header {
+    display: block !important;
   }
 
   /* 
