@@ -4,7 +4,9 @@
   "description": "This repo contains a static mirror of the current Site site under `/site`.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node scripts/build.js",
+    "cms": "python3 local-cms/server.py",
+    "test:cms": "python3 -m unittest discover -s local-cms -p test_*.py"
   },
   "keywords": [],
   "author": "",

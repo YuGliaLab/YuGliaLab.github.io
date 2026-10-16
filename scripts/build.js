@@ -104,5 +104,6 @@ pages.forEach(page => {
         console.log(`Built ${page.output}`);
     } catch (e) {
         console.error(`Error building ${page.output}:`, e);
+        process.exitCode = 1;
     }
 });

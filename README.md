@@ -1,5 +1,11 @@
 # Yu Lab Website (GitHub Pages)
 
+## Local website editor
+
+Double-click **Start CMS.command** (macOS) or **Start CMS.bat** (Windows) to edit, preview, and publish using your existing Git authentication. See [LOCAL-CMS.md](LOCAL-CMS.md) for setup, editing, and recovery instructions.
+
+The local CMS edits the actual templates; the historical Decap notes below describe the older placeholder setup.
+
 This repo contains a static mirror of the current Wix site under `/site`.
 
 ## Local preview
